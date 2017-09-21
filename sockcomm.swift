@@ -21,7 +21,7 @@ if inp != nil && out != nil {
     outputStream.open()
     
     if outputStream.streamError == nil && inputStream.streamError == nil {
-        let queryString = "クライアントから送信したいデータ"
+        let queryString = "data send by me(Client)"
         let queryData = [UInt8](queryString.utf8) 
         while true {
             UnsafePointer<UInt8>(queryData)
@@ -29,8 +29,8 @@ if inp != nil && out != nil {
             var readChars: Int = inputStream.read(&buffer, maxLength: buffer.count)
             if (readChars > 0) {
                 let readString: String = NSString(data: NSData(bytes:buffer, length:readChars) as Data, encoding: String.Encoding.utf8.rawValue)! as String
-                print(readString) //  サーバから受信したデータ
-                usleep(300 * 1000) //300ms待つ(適当
+                print(readString) //  data from server
+                usleep(300 * 1000) // wait 300 msec (just wait. it is no meaning. using as "NOP") 
                 }
              
             } else {
